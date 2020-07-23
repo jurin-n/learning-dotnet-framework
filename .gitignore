@@ -261,7 +261,7 @@ ServiceFabricBackup/
 *.rptproj.bak
 
 # SQL Server files
-*.mdf
+#*.mdf #コミット対象にする
 *.ldf
 *.ndf
 
