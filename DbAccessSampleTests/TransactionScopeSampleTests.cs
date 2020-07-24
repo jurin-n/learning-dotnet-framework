@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Data;
+using System.Threading;
 
 namespace DbAccessSample.Tests
 {
@@ -17,7 +18,8 @@ namespace DbAccessSample.Tests
         public void AddTest()
         {
             AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data"));
-            String connectionString = "Data Source=localhost; Database = master; Trusted_Connection = True;";
+            //String connectionString = "Data Source=localhost; Database = master; Trusted_Connection = True;Min Pool Size=100;Max Pool Size=100;";
+            String connectionString = "Data Source=localhost; Database = master;User ID=user01;Password=user01password; Min Pool Size=100;Max Pool Size=1000;";
             String commandText = "INSERT INTO item(ItemId,Name,Description,CreatedOn) Values(@ItemId, @Name, @Description, @CreatedOn);";
 
             SqlCommand command = new SqlCommand(commandText);
@@ -44,6 +46,8 @@ namespace DbAccessSample.Tests
 
             NonTransactionDbConnectionSample nt = new NonTransactionDbConnectionSample();
             nt.get(connectionString, new SqlCommand("SELECT Description FROM item"));
+
+            //Thread.Sleep(20000); //Connection Poolingされていること確認するためsleep
         }
     }
 }
