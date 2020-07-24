@@ -58,6 +58,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
+    <Compile Include="DbHelperTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TransactionScopeSampleTests.cs" />
   </ItemGroup>

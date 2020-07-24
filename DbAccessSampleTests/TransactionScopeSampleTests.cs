@@ -19,7 +19,8 @@ namespace DbAccessSample.Tests
         {
             AppDomain.CurrentDomain.SetData("DataDirectory", System.IO.Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "App_Data"));
             //String connectionString = "Data Source=localhost; Database = master; Trusted_Connection = True;Min Pool Size=100;Max Pool Size=100;";
-            String connectionString = "Data Source=localhost; Database = master;User ID=user01;Password=user01password; Min Pool Size=100;Max Pool Size=1000;";
+            //String connectionString = "Data Source=localhost; Database = master;User ID=user01;Password=user01password; Min Pool Size=100;Max Pool Size=1000;";
+            String connectionString = DbHelper.getConnectionString();
             String commandText = "INSERT INTO item(ItemId,Name,Description,CreatedOn) Values(@ItemId, @Name, @Description, @CreatedOn);";
 
             SqlCommand command = new SqlCommand(commandText);
